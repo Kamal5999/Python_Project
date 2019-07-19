@@ -1,0 +1,41 @@
+course selected,1      NIT KURUKSHETRA COMPUTER SCIENCE,2      NIT KURUKSHETRA INFORMATION AND TECHNOLOGY
+course selected,2  CHICKEN BURGER____________________________________ 100,3  SPRING ROLL _______________________________________ 20
+course selected,2  CHICKEN BURGER____________________________________ 100,3  SPRING ROLL _______________________________________ 20
+course selected,2  CHICKEN BURGER____________________________________ 100,3  SPRING ROLL _______________________________________ 20
+course selected,2  CHICKEN BURGER____________________________________ 100,3  SPRING ROLL _______________________________________ 20
+course selected,1  VEG BURGER ________________________________________ 25,2  CHICKEN BURGER____________________________________ 100
+course selected,2  CHICKEN BURGER____________________________________ 100,3  SPRING ROLL _______________________________________ 20
+course selected,3  KACHORI _______________________________________ 20,5  PLAIN PARATHA _________________________________ 30
+course selected,2  ICECREAM ___________________________________100
+course selected,3  PEPSI _______________________________________ 35,4  COLD COFFEE __________________________________ 50
+course selected,1  COFFEE ________________________________________ 15
+course selected,4  COLD COFFEE __________________________________ 50
+course selected,2  CHICKEN BURGER____________________________________ 100,3  SPRING ROLL _______________________________________ 20
+course selected,2  CHICKEN BURGER____________________________________ 100,3  SPRING ROLL _______________________________________ 20
+course selected,1      NIT KURUKSHETRA COMPUTER SCIENCE,8      NIT WARANGAL COMPUTER SCIENCE,13    NIT WARANGAL CIVIL ENGINEERING,17    MNIT ALLAHABAD ELECTRONICS AND COMUNICATION
+course selected,2  TEA __________________________________________  10,3  PEPSI _______________________________________ 35
+course selected,1      NIT KURUKSHETRA COMPUTER SCIENCE,2      NIT KURUKSHETRA INFORMATION AND TECHNOLOGY,8      NIT WARANGAL COMPUTER SCIENCE,9      NIT WARANGAL INFORMATION AND TECHNOLOGY,16    MNIT ALLAHABAD INFORMATION AND TECHNOLOGY,17    MNIT ALLAHABAD ELECTRONICS AND COMUNICATION
+course selected,2  DOSA __________________________________________ 100,4  ALOO PARATHA __________________________________ 50
+course selected,3  KACHORI _______________________________________ 20,5  PLAIN PARATHA _________________________________ 30
+course selected,3  KACHORI _______________________________________ 20,5  PLAIN PARATHA _________________________________ 30
+course selected,3  KACHORI _______________________________________ 20,5  PLAIN PARATHA _________________________________ 30
+course selected,2  TEA __________________________________________  10,3  PEPSI _______________________________________ 35
+course selected,3  PEPSI _______________________________________ 35
+course selected,1  VEG BURGER ________________________________________ 25,3  SPRING ROLL _______________________________________ 20
+course selected,4  COLD COFFEE __________________________________ 50
+course selected,3  KACHORI _______________________________________ 20,4  ALOO PARATHA __________________________________ 50
+course selected,2  ICECREAM ___________________________________100
+course selected,3  CAKE _______________________________________ 20
+course selected
+course selected,3  KACHORI _______________________________________ 20,5  PLAIN PARATHA _________________________________ 30
+course selected,3  KACHORI _______________________________________ 20,5  PLAIN PARATHA _________________________________ 30
+course selected,1  COFFEE ________________________________________ 15,4  COLD COFFEE __________________________________ 50
+course selected,2  DOSA __________________________________________ 100,4  ALOO PARATHA __________________________________ 50
+course selected,3  PEPSI _______________________________________ 35,4  COLD COFFEE __________________________________ 50
+course selected,1  VEG BURGER ________________________________________ 25,3  SPRING ROLL _______________________________________ 20
+course selected,2  DOSA __________________________________________ 100,4  ALOO PARATHA __________________________________ 50,5  PLAIN PARATHA _________________________________ 30
+course selected,3  KACHORI _______________________________________ 20,5  PLAIN PARATHA _________________________________ 30
+course selected,3  KACHORI _______________________________________ 20,5  PLAIN PARATHA _________________________________ 30
+course selected,3  PEPSI _______________________________________ 35,4  COLD COFFEE __________________________________ 50
+course selected,2  TEA __________________________________________  10
+course selected,3  PEPSI _______________________________________ 35,4  COLD COFFEE __________________________________ 50
