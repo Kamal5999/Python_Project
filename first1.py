@@ -1,6 +1,6 @@
-
 from tkinter import  *
 import os
+import numpy as np
 def register():
     global rs
     rs = Toplevel(ms)
@@ -11,8 +11,17 @@ def register():
     global password
     global username_entry
     global password_entry
+    global name
+    global age
+    global phone_no
+    global name_entry
+    global phone_entry
+    global age_entry
     username = StringVar()
     password = StringVar()
+    name=StringVar()
+    age=StringVar()
+    phone_no=StringVar()
 
     Label(rs, text="Please enter the  details ", bg="blue").pack(fill=X)
     Label(rs, text="").pack()
@@ -21,10 +30,22 @@ def register():
     username_entry = Entry(rs, textvariable=username)
     username_entry.pack()
     password_lable = Label(rs, text="Password : ")
+ 
     password_lable.pack()
     password_entry = Entry(rs, textvariable=password, show='*')
     password_entry.pack()
-    Label(rs, text="").pack()
+    Label(rs, text="please enter the personal details",bg="blue").pack(fill=X)
+    Label(rs,text=" ").pack()
+    Label(rs,text="Name: ").pack()
+    name_entry=Entry(rs,textvariable=name)
+    name_entry.pack()
+    Label(rs,text="Age: ").pack()
+    age_entry=Entry(rs,textvariable=age)
+    age_entry.pack()
+    Label(rs,text=":Phone no: ").pack()
+    phone_entry=Entry(rs,textvariable=phone_no)
+    phone_entry.pack()
+    Label(rs,text=" ").pack()
     Button(rs, text="Register", height=1, bg="blue", command = register_user).pack()
 
 def login():
@@ -58,13 +79,23 @@ def register_user():
 
     global username_info
     global password_info
+    global name_info
+    global age_info
+    global phone_info
     username_info = username.get()
     password_info = password.get()
+    name_info=name.get()
+    age_info=age.get()
+    phone_info=phone_no.get()
 
     file = open(username_info, "w")
     file.write(username_info + "\n")
-    file.write(password_info)
+    file.write(password_info+ "\n")
+    file.write(age_info+ "\n")
+    file.write(name_info+"\n")
+    file.write(phone_info+"\n")
     file.close()
+    username_info+="p"
 
     username_entry.delete(0, END)
     password_entry.delete(0, END)
@@ -73,6 +104,8 @@ def register_user():
     rs.destroy()
 
 def login_verify():
+    global username1
+    global password1
     username1 = uv.get()
     password1 = pv.get()
     username_login_entry.delete(0, END)
@@ -131,14 +164,16 @@ def restaurant():
 
 def ok():
      global jk
+     global item
      jk=Toplevel(ms)
      jk.geometry("1800x900")
      Label(jk,text="MENU",height="3",width="1000",font=("calibri",18),bg="light green").pack(fill="x")
      def IND():
+        
 
         label1=Label(jk,text="SELECT ITEM",bg="blue",fg="red",font=("bold",30))
         label1.pack(fill="x")
-        lb=Listbox(jk,width=130,height=34,selectmode="multiple")
+        lb=Listbox(jk,width=130,height=34)
         lb.insert(1,"1  SAMOSA ________________________________________ 25")
         lb.insert(2,"2  DOSA __________________________________________ 100")
         lb.insert(3,"3  KACHORI _______________________________________ 20")
@@ -148,14 +183,13 @@ def ok():
         lb.place(x=300,y=90)     
         def function4():
                     clicked_item=lb.curselection()
-                    f1=open("file2.txt","at")
-                    f1.write("course selected")
-                    for i in clicked_item:
-                        f1.write(","+lb.get(i))
-                    f1.write("\n")
-                    location()
+                    item=lb.get(clicked_item)
+                    advise() 
+                    learning(item)
         Button(jk,text="SELECT",height="5",width="20",bg="red",fg="blue",command=function4).pack()
      def bevg():
+        
+
 
         label1=Label(jk,text="SELECT ITEM",bg="blue",fg="red",font=("bold",30))
         label1.pack(fill="x")
@@ -166,13 +200,11 @@ def ok():
         lb.insert(4,"4  COLD COFFEE __________________________________ 50")
         lb.place(x=300,y=90)     
         def function4():
+
                     clicked_item=lb.curselection()
-                    f1=open("file2.txt","at")
-                    f1.write("course selected")
-                    for i in clicked_item:
-                        f1.write(","+lb.get(i))
-                    f1.write("\n")
-                    location()
+                    item=lb.get(clicked_item)
+                    advise() 
+                    learning(item)
         Button(jk,text="SELECT",height="5",width="20",bg="red",fg="blue",command=function4).pack()
      def DST():
 
@@ -185,12 +217,10 @@ def ok():
         lb.place(x=300,y=90)     
         def function4():
                     clicked_item=lb.curselection()
-                    f1=open("file2.txt","at")
-                    f1.write("course selected")
-                    for i in clicked_item:
-                        f1.write(","+lb.get(i))
-                    f1.write("\n")
-                    location()
+                    item=lb.get(clicked_item)
+                    
+                    advise() 
+                    learning(item)
         Button(jk,text="SELECT",height="5",width="20",bg="red",fg="blue",command=function4).pack()
      def SNK():
 
@@ -204,12 +234,10 @@ def ok():
         lb.place(x=300,y=90)     
         def function4():
                     clicked_item=lb.curselection()
-                    f1=open("file2.txt","at")
-                    f1.write("course selected")
-                    for i in clicked_item:
-                        f1.write(","+lb.get(i))
-                    f1.write("\n")
-                    location()
+                    item=lb.get(clicked_item)
+                    
+                    advise()
+                    learning(item)
     
         Button(jk,text="SELECT",height="5",width="20",bg="red",fg="blue",command=function4).pack()
 
@@ -221,6 +249,85 @@ def ok():
      Button(jk,text="desert",height="5",width="26",bg="white",command=DST).place(x=1000,y=310)
      Label(jk,height="200",width="200",image=indian).place(x=500,y=450)
      Button(jk,text="indian",height="5",width="26",bg="white",command=IND).place(x=500,y=660)
+
+def advise():
+    global adv
+    global ansv
+    ansv=StringVar()
+    adv=Toplevel(ms)
+    adv.geometry("1800x900")
+    Label(adv,text="People also baught").pack(fill=X)
+    Entry(adv,textvariable=ansv).pack(fill=X)
+
+def learning(item):
+    global ans
+    row=5
+    column=5
+    map_dish={
+        "1  SAMOSA ________________________________________ 25": 11,
+        "2  DOSA __________________________________________ 100": 12,
+        "3  KACHORI _______________________________________ 20": 13,
+        "4  ALOO PARATHA __________________________________ 50": 14,
+        "5  PLAIN PARATHA _________________________________ 30": 15,
+        "6  PANEER PARATHA ________________________________ 60": 16,
+        "1  COFFEE ________________________________________ 15": 21,
+        "2  TEA __________________________________________  10": 22,
+        "3  PEPSI _______________________________________ 35": 23,
+        "4  COLD COFFEE __________________________________ 50":24
+
+        }
+
+
+    age_inf=StringVar()
+    id_inf=username1
+    f2=open(id_inf,"r")
+    nf=f2.readline()
+    pf=f2.readline()
+    age_inf=f2.readline()
+    f2.close()
+    age_no=int(age_inf)
+
+    item_no=map_dish[item]
+    li=list()
+    database=dict()
+    database={
+     21:(13,35,1),
+     22:(15,50,1),
+     23:(12,14,1),
+     24:(14,24,1)
+    }
+    fans=1000000
+    fset=0
+    fstring=""
+    for i in database:
+        li=database[i]
+        a1=li[0]-item_no
+        b1=li[0]-age_no
+        ans1=a1*a1+b1*b1
+        if ans1<fans:
+            fans=ans1
+            fset=i
+    p=1
+    for i in map_dish:
+        if map_dish[i]==fset:
+            fstring=i
+            p=0
+            break
+    if p==1:
+        ansv.set(fset)
+    else:
+        ansv.set(fstring)
+
+
+
+
+    # arr=[]
+    # arr.append(age_no)
+    # arr.append(map_dish("item"))
+    #  matrix.append(arr)
+    # ans=t_fres[0]+t_fres[1]*item_no+t_fres[2]*age_no
+    # ansv.set(ans)
+
 
 def location():
     lc=Toplevel(jk)
@@ -248,7 +355,6 @@ def payment():
     global cn
     global cey
     global cvv
-
     cn = StringVar()
     cey = StringVar()
     cvv = StringVar()
