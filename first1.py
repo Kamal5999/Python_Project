@@ -1,5 +1,6 @@
 from tkinter import  *
 import os
+import sqlite3
 import numpy as np
 def register():
     global rs
@@ -95,7 +96,6 @@ def register_user():
     file.write(name_info+"\n")
     file.write(phone_info+"\n")
     file.close()
-    username_info+="p"
 
     username_entry.delete(0, END)
     password_entry.delete(0, END)
@@ -193,7 +193,7 @@ def ok():
 
         label1=Label(jk,text="SELECT ITEM",bg="blue",fg="red",font=("bold",30))
         label1.pack(fill="x")
-        lb=Listbox(jk,width=130,height=34,selectmode="multiple")
+        lb=Listbox(jk,width=130,height=34)
         lb.insert(1,"1  COFFEE ________________________________________ 15")
         lb.insert(2,"2  TEA __________________________________________  10")
         lb.insert(3,"3  PEPSI _______________________________________ 35")
@@ -253,11 +253,61 @@ def ok():
 def advise():
     global adv
     global ansv
+    global itemb
     ansv=StringVar()
     adv=Toplevel(ms)
     adv.geometry("1800x900")
     Label(adv,text="People also baught").pack(fill=X)
     Entry(adv,textvariable=ansv).pack(fill=X)
+    Label(adv,text=" ").pack()
+    label1=Label(adv,text="SELECT Beverage",bg="blue",fg="red",font=("bold",30)).pack(fill=X)
+    lb=Listbox(adv,width=130,height=34)
+    lb.insert(1,"1  COFFEE ________________________________________ 15")
+    lb.insert(2,"2  TEA __________________________________________  10")
+    lb.insert(3,"3  PEPSI _______________________________________ 35")
+    lb.insert(4,"4  COLD COFFEE __________________________________ 50")
+    lb.place(x=300,y=90)     
+    def function4():
+                    clicked_item=lb.curselection()
+                    itemb=lb.get(clicked_item)
+                    perform(itemb) 
+    Label(adv,text=" ",height="5").pack()                   
+    Button(adv,text="SELECT",height="5",width="5",bg="red",fg="blue",command=lambda:function4()).pack()
+
+def perform(item):
+    map_dish={
+        "1  SAMOSA ________________________________________ 25": 11,
+        "2  DOSA __________________________________________ 100": 12,
+        "3  KACHORI _______________________________________ 20": 13,
+        "4  ALOO PARATHA __________________________________ 50": 14,
+        "5  PLAIN PARATHA _________________________________ 30": 15,
+        "6  PANEER PARATHA ________________________________ 60": 16,
+        "1  COFFEE ________________________________________ 15": 21,
+        "2  TEA __________________________________________  10": 22,
+        "3  PEPSI _______________________________________ 35": 23,
+        "4  COLD COFFEE __________________________________ 50":24
+
+        }
+    item_nob=map_dish[item]
+    fset=int(item_nob)
+    con=sqlite3.connect("kamal.db")
+    sqlans=con.execute("select id,item_no,age,count from bev")
+    for i in sqlans:
+        if i[0]==fset:
+            nb=i[1]*i[3]+item_no
+            mb=i[2]*i[3]+age_no
+            i[3]+=1
+            cb=i[3]
+            nb=nb/i[3]
+            mb=mb/i[3]
+    con.execute("update bev set item_no=nb,age=mb,count=cb where id=fset")
+    con.commit() 
+    con.close()          
+
+def select_beverage():
+    global sb;
+    sb=Toplevel(ms)
+    sb.geometry("900x900")
 
 def learning(item):
     global ans
@@ -288,25 +338,18 @@ def learning(item):
     age_no=int(age_inf)
 
     item_no=map_dish[item]
-    li=list()
-    database=dict()
-    database={
-     21:(13,35,1),
-     22:(15,50,1),
-     23:(12,14,1),
-     24:(14,24,1)
-    }
     fans=1000000
     fset=0
-    fstring=""
-    for i in database:
-        li=database[i]
-        a1=li[0]-item_no
-        b1=li[0]-age_no
+    fstring=" "
+    con=sqlite3.connect("kamal.db")
+    sqlans=con.execute("select * from bev")
+    for i in sqlans:
+        a1=i[1]-item_no
+        b1=i[2]-age_no
         ans1=a1*a1+b1*b1
         if ans1<fans:
             fans=ans1
-            fset=i
+            fset=i[0]
     p=1
     for i in map_dish:
         if map_dish[i]==fset:
@@ -317,6 +360,7 @@ def learning(item):
         ansv.set(fset)
     else:
         ansv.set(fstring)
+
 
 
 
@@ -399,6 +443,15 @@ def incorrect():
     Label(inc, text="incorrect details").pack(fill="y")
     Button(inc, text="OK", command=delete_incorrect).pack()
 
+def firsttime():
+    con=sqlite3.connect("kamal.db")
+    con.execute("create table bev(id int,item_no int,age int,count int)")
+    con.execute("insert into bev values(21,13,35,1)")
+    con.execute("insert into bev values(22,15,50,1)")
+    con.execute("insert into bev values(23,12,14,1)")
+    con.execute("insert into bev values(24,14,24,1)")
+    con.commit()
+    con.close()
 
 def main_account_screen():
     global ms
